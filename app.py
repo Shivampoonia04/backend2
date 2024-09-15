@@ -39,7 +39,7 @@ def update_faq(faq_id):
     faq = next((item for item in faqs if item['id'] == faq_id), None)
     if faq is None:
         return jsonify({'error': 'FAQ not found'}), 404
-    
+
     data = request.json
     faq.update(data)
     return jsonify(faq), 200
@@ -51,5 +51,6 @@ def delete_faq(faq_id):
     faqs = [item for item in faqs if item['id'] != faq_id]
     return jsonify({'message': 'FAQ deleted successfully'}), 200
 
+# For local development
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000)
