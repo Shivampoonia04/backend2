@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Allow cross-origin requests
+
+# Configure CORS to allow requests from your Netlify frontend
+CORS(app, resources={r"/faqs/*": {"origins": "https://sprightly-cranachan-7cf706.netlify.app/"}})
 
 # In-memory storage for FAQs
 faqs = []
